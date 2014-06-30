@@ -39,6 +39,7 @@ my @constructors = (
   Any               => "",
   Array             => "",
   ArrayEach         => "array_each",
+  ArrayNone         => "array_none",
   ArrayElementsOnly => "",
   ArrayLength       => "",
   ArrayLengthOnly   => "",
