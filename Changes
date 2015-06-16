@@ -1,5 +1,21 @@
 Revision history for Test-Deep
 
+0.115     2014-01-09
+        - worked around a bug in chained goto on 5.8.5
+
+0.114     2014-12-11
+        - improve prereqs metadata (thanks, Karen Etheridge)
+        - add a noneof() set test (thanks, Peter Haworth)
+        - regexponly hasn't worked... ever. now it does
+        - passing :preload to import loads all plugins up front
+        - a few more tests have been documented
+        - the many exports of Test::Deep are now documented!
+
+0.113     2014-08-22
+        - fix a compile error (!!) in RegexpOnly
+        - fix some documentation typos (thanks, ZOFFIX)
+        - add license to META file
+
 0.112     2013-11-30
         - rebuild MANIFEST, adding two forgotten files
 
