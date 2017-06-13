@@ -1,61 +1,62 @@
 use strict;
 use warnings;
+use lib 't/lib';
 
-use t::std;
+use Std;
 
 {
-	my $b = bless [], "class";
-	check_test(
-		sub {
-			cmp_deeply($b, blessed("class"));
-		},
-		{
-			actual_ok => 1,
-			diag => '',
-		},
-		"Same"
-	);
+  my $b = bless [], "class";
+  check_test(
+    sub {
+      cmp_deeply($b, blessed("class"));
+    },
+    {
+      actual_ok => 1,
+      diag => '',
+    },
+    "Same"
+  );
 
-	check_test(
-		sub {
-			cmp_deeply($b, blessed("other"));
-		},
-		{
-			actual_ok => 0,
-			diag => <<EOM,
+  check_test(
+    sub {
+      cmp_deeply($b, blessed("other"));
+    },
+    {
+      actual_ok => 0,
+      diag => <<EOM,
 Compared blessed(\$data)
    got : 'class'
 expect : 'other'
 EOM
-		},
-		"Same"
-	);
+    },
+    "Same"
+  );
 }
 
 {
-	check_test(
-		sub {
-			cmp_deeply([], blessed());
-		},
-		{
-			actual_ok => 1,
-			diag => '',
-		},
-		"Same"
-	);
+  check_test(
+    sub {
+      cmp_deeply([], blessed());
+    },
+    {
+      actual_ok => 1,
+      diag => '',
+    },
+    "Same"
+  );
 
-	check_test(
-		sub {
-			cmp_deeply([], blessed("class"));
-		},
-		{
-			actual_ok => 0,
-			diag => <<EOM,
+  check_test(
+    sub {
+      cmp_deeply([], blessed("class"));
+    },
+    {
+      actual_ok => 0,
+      diag => <<EOM,
 Compared blessed(\$data)
    got : undef
 expect : 'class'
 EOM
-		},
-		"Same"
-	);
+    },
+    "Same"
+  );
 }

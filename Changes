@@ -1,6 +1,72 @@
 Revision history for Test-Deep
 
-0.115     2014-01-09
+1.127     2017-05-04
+        - no code changes from previous release
+
+1.126_001 2017-04-17
+        - do not eagerly convert simple scalars into tests in the all, any, and
+          none tests; this was breaking LeafWrapper application
+
+1.126     2016-12-27
+        - no changes since v1.125_001
+
+1.125_001 2016-12-27
+        - if objects in the "expected" structured have an as_test_deep_cmp
+          method, it will be called and its return (which should be a
+          Test::Deep::Cmp object) will be used as the test for that location in
+          the structure
+        - internal undocumented class_base routine has been replaced
+          with a different, clearly private routine
+        - the LeafWrapper is also used for objects with an unknown reftype
+          (like LVALUE or other weird ones)
+
+1.124     2016-11-05
+        - avoid an uninitialized warning when array_each() compares to a
+          non-reference (thanks, Максим Вуец!)
+
+1.123     2016-09-09
+        - remove test suite reliance on "." appearing @INC (thanks, Graham Knop
+          and Karen Etheridge!)
+        - when an object with stringification overloading fails to match a
+          "re" test, its stringification is included in the diagnostics
+
+1.122     2016-09-07
+        - added $Test::Deep::LeafWrapper to control the behavior of simple
+          values in the "expected" definition; by default, they are treated as
+          shallow($x) tests, but you can now say (for example)
+          C<< $Test::Deep::LeafWrapper = \&str >> to always treat the got value
+          as a string, even if blessed, etc.
+
+1.121_001 2016-07-19
+        - documentation improvements
+        - avoid a few evals, localize $@ in a few places where eval is used
+        - good bye tabs, hello spaces
+
+1.120     2015-11-27
+        - no changes since 0.119_01
+        - this massive version bump was a mistake
+
+0.119_01  2015-11-19
+        - add none() test; it's like any(), but negative
+        - fix stringification of any() expectations
+
+0.119     2015-09-29
+        - remove use of Test::NoWarnings for user-facing tests
+
+0.118     2015-07-27 TRIAL RELEASE
+        - overloading of & and | no longer can change All or Any objects
+          found as arguments
+        - an All as an argument to an All constructed is flattened out into its
+          All-ed values; the same goes for Any
+
+0.117     2015-06-21
+        - do not lose argument(s) to import
+          (fixes https://github.com/rjbs/Test-Deep/issues/29 )
+
+0.116     2015-06-20
+        - on its own, :preload options uses default group of exports
+
+0.115     2015-01-09
         - worked around a bug in chained goto on 5.8.5
 
 0.114     2014-12-11
